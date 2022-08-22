@@ -3,6 +3,7 @@
   "name": "Weishaupt WCM-COM",
   "version": "1.0",
   "documentation": "https://github.com/phamels/HA-Weishaupt-WCM-COM",
+  "issue_tracker": "https://github.com/phamels/HA-Weishaupt-WCM-COM/issues",
   "dependencies": [],
   "codeowners": [],
   "requirements": ["weishaupt-wcm-com"],
