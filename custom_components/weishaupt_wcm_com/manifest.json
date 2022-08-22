@@ -1,7 +1,7 @@
 {
   "domain": "weishaupt_wcm_com",
   "name": "Weishaupt WCM-COM",
-  "documentation": "https://github.com/home-assistant/schmiegelt",
+  "documentation": "https://github.com/phamels/HA-Weishaupt-WCM-COM",
   "dependencies": [],
   "codeowners": [],
   "requirements": ["weishaupt-wcm-com==0.0.9"]
