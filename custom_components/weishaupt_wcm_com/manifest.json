@@ -1,6 +1,7 @@
 {
   "domain": "weishaupt_wcm_com",
   "name": "Weishaupt WCM-COM",
+  "version": "1.0",
   "documentation": "https://github.com/phamels/HA-Weishaupt-WCM-COM",
   "dependencies": [],
   "codeowners": [],
