@@ -5,5 +5,5 @@
   "documentation": "https://github.com/phamels/HA-Weishaupt-WCM-COM",
   "dependencies": [],
   "codeowners": [],
-  "requirements": ["weishaupt-wcm-com==0.0.9"]
+  "requirements": ["weishaupt-wcm-com"]
 }
