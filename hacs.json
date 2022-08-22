@@ -1,3 +1,4 @@
 {
-  "name": "Weishaupt WCM-COM HA Module"
+  "name": "Weishaupt WCM-COM HA Module",
+  "render_readme": true
 }
