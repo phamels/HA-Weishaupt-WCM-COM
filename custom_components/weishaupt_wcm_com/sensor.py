@@ -13,6 +13,17 @@ from .const import LOAD_SETTING_KEY
 from .const import WARM_WATER_TEMPERATURE_KEY 
 from .const import FLOW_TEMPERATURE_KEY
 from .const import FLUE_GAS_TEMPERATURE_KEY
+from .const import MIXED_EXTERNAL_TEMPERATURE_KEY
+from .const import ROOM_TEMPERATURE_KEY
+from .const import OPERATING_MODE_KEY
+from .const import OPERATING_PHASE_KEY
+from .const import PUMP_KEY
+from .const import WARM_WATER_KEY
+from .const import FLAME_KEY
+from .const import ERROR_KEY
+from .const import GAS_VALVE_1_KEY
+from .const import GAS_VALVE_2_KEY
+from .const import HEATING_KEY
 
 from . import WeishauptBaseEntity
 
@@ -36,7 +47,18 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
             WeishauptSensor(hass, config, LOAD_SETTING_KEY, "kW"),
             WeishauptSensor(hass, config, WARM_WATER_TEMPERATURE_KEY, "°C"),
             WeishauptSensor(hass, config, FLOW_TEMPERATURE_KEY, "°C"),
-            WeishauptSensor(hass, config, FLUE_GAS_TEMPERATURE_KEY, "°C")
+            WeishauptSensor(hass, config, FLUE_GAS_TEMPERATURE_KEY, "°C"),
+            WeishauptSensor(hass, config, ROOM_TEMPERATURE_KEY, "°C"),
+            WeishauptSensor(hass, config, MIXED_EXTERNAL_TEMPERATURE_KEY, "°C"),
+            WeishauptSensor(hass, config, OPERATING_MODE_KEY, ""),
+            WeishauptSensor(hass, config, OPERATING_PHASE_KEY, ""),
+            WeishauptSensor(hass, config, PUMP_KEY, ""),
+            WeishauptSensor(hass, config, WARM_WATER_KEY, ""),
+            WeishauptSensor(hass, config, FLAME_KEY, ""),
+            WeishauptSensor(hass, config, ERROR_KEY, ""),
+            WeishauptSensor(hass, config, GAS_VALVE_1_KEY, ""),
+            WeishauptSensor(hass, config, GAS_VALVE_2_KEY, ""),
+            WeishauptSensor(hass, config, HEATING_KEY, ""),
         ]
     )
 
