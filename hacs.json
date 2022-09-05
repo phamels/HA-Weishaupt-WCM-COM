@@ -1,4 +1,5 @@
 {
   "name": "Weishaupt WCM-COM HA Module",
-  "render_readme": true
+  "render_readme": true,
+  "iot_class": "Local Polling"
 }
