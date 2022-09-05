@@ -6,6 +6,6 @@
   "issue_tracker": "https://github.com/phamels/HA-Weishaupt-WCM-COM/issues",
   "dependencies": [],
   "codeowners": [],
-  "requirements": ["git+https://github.com/phamels/Py-Weishaupt-WCM-COM.git===0.0.12"],
+  "requirements": ["git+https://github.com/phamels/Py-Weishaupt-WCM-COM.git"],
   "iot_class": "local_polling"
 }
