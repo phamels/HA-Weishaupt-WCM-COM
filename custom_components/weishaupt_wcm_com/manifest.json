@@ -1,7 +1,7 @@
 {
   "domain": "weishaupt_wcm_com",
   "name": "Weishaupt WCM-COM",
-  "version": "1.3",
+  "version": "1.4",
   "documentation": "https://github.com/phamels/HA-Weishaupt-WCM-COM",
   "issue_tracker": "https://github.com/phamels/HA-Weishaupt-WCM-COM/issues",
   "dependencies": [],
