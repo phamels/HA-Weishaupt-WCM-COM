@@ -1,10 +1,12 @@
 """Weishaupt WCM-COM."""
+from homeassistant.components.sensor import SensorEntity
+from homeassistant.helpers.discovery import load_platform
 
 from .const import DOMAIN
 import logging
-from homeassistant.helpers.entity import Entity
-from datetime import timedelta, datetime
-from weishaupt_wcm_com import heat_exchanger
+from homeassistant.core import HomeAssistant
+from datetime import timedelta
+from . import heat_exchanger
 import json
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
@@ -33,7 +35,7 @@ CONFIG_SCHEMA = vol.Schema({
     }),
 }, extra=vol.ALLOW_EXTRA)
 
-def setup(hass, config):
+def setup(hass: HomeAssistant, config):
     """Your controller/hub specific code."""
     # Data that you want to share with your platforms
 
@@ -45,12 +47,12 @@ def setup(hass, config):
 
     hass.data[DOMAIN] = api
 
-    hass.helpers.discovery.load_platform('sensor', DOMAIN, {}, config)
+    load_platform(hass,'sensor', DOMAIN, {}, config)
 
     return True
 
 
-class WeishauptBaseEntity(Entity):  
+class WeishauptBaseEntity(SensorEntity):
     def __init__(self, hass, config):
         self._api = hass.data[DOMAIN]
         
@@ -66,6 +68,15 @@ class WeishauptBaseEntity(Entity):
         _LOGGER.debug("Super Updating")
         self._api.update()
 
+    async def async_added_to_hass(self) -> None:
+        """Callback when entity is registered in HA"""
+        await super().async_added_to_hass()
+
+        _LOGGER.debug(
+            "    Added %s from WCM-COM",
+            self.entity_id
+        )
+
 
 class WeishauptAPI:
 
@@ -78,15 +89,16 @@ class WeishauptAPI:
         self._data = {}
 
     def getData(self):
+        _LOGGER.debug("Getting WCM-COM Data: %s", self._data)
         return self._data
 
     # The actual fetch of information, since the wcm-com module can only handle one connection at a time, this has to be throttled
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         result = heat_exchanger.process_values(self._host, self._username, self._password)
-        _LOGGER.debug("Fetching new data")
+        _LOGGER.debug("Fetching new WCM-COM data")
         if result != None:
             self._data = json.loads(result)
         else:
-            _LOGGER.warning("Cannot Update Data")
+            _LOGGER.warning("Cannot Update WCM-COM Data")
     

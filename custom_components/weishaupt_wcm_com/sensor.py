@@ -1,10 +1,9 @@
 """Platform for sensor integration."""
-from homeassistant.const import TEMP_CELSIUS
-from homeassistant.helpers.entity import Entity
+from homeassistant.const import UnitOfTemperature
 import logging
-from datetime import timedelta, datetime
 
-from .const import DOMAIN
+from homeassistant.helpers.entity import generate_entity_id
+
 from .const import NAME_PREFIX
 
 from .const import OIL_CONSUMPTION_KEY
@@ -66,7 +65,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 class WeishauptSensor(WeishauptBaseEntity):
     """Representation of a Sensor."""
 
-    def __init__(self, hass, config, sensor_name, sensor_unit):
+    def __init__(self, hass, config, sensor_name, sensor_unit) -> None:
         super().__init__(hass, config)
         """Initialize the sensor."""
         self._state = None
@@ -75,11 +74,21 @@ class WeishauptSensor(WeishauptBaseEntity):
 
         self._name = sensor_name
         self._unit = sensor_unit
+        # self.entity_id = generate_entity_id("sensor.{}", f"wcm_{self._name.lower().replace(' ', '_')}")
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Return the name of the sensor."""
         return NAME_PREFIX + self._name
+
+    @property
+    def unique_id(self):
+        return f"wcm_{self._name.lower().replace(' ', '_')}"
+
+    # @property
+    # def entity_id(self) -> str:
+    #     return generate_entity_id("sensor.{}", f"wcm_{self._name.lower().replace(' ', '_')}")
+    #     # return f"wcm_{self._name.lower().replace(' ', '_')}"
 
     @property
     def state(self):
